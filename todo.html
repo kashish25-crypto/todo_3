@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO LIST</title>
+    <style>
+    body {
+    background-image: url("https://cdn.vectorstock.com/i/500p/13/40/todo-list-seamless-pattern-universal-background-vector-7561340.jpg");
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+input {
+    padding: 10px;
+    width: 50%;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+   font-size: 20px;
+}
+
+button {
+    padding: 15px 17px;
+    margin-left: 5px;
+    border: none;
+    background:darkblue;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: lightcyan;
+    color: black;
+}
+
+ul {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    padding: 10px;
+    margin: 8px auto;
+    width: 50%;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+}
+
+li button {
+    background: red;
+    padding: 15px 10px;
+}
+
+li button:hover {
+    background: darkred;
+}
+    </style>
+</head>
+<body>
+
+    <h1>Todo List 📝</h1>
+    <input type="text" id="input" placeholder="Enter task">
+<button id="addBtn">Add</button>
+  <ul id="list"></ul>
+<script>
+    let input = document.getElementById("input");
+    let addBtn = document.getElementById("addBtn");
+    let list = document.getElementById("list");
+
+    addBtn.addEventListener("click",function(){
+        let task = input.value;
+        if(task === "" ){
+            input.style.border = "2px solid red";
+            return;
+        }
+        input.style.border = "";
+        let li = document.createElement("li");
+        li.textContent = task;
+
+        let delBtn = document.createElement("button");
+        delBtn.textContent = "Delete";
+
+        delBtn.addEventListener("click",function(){
+            li.remove();
+        });
+        li.appendChild(delBtn);
+        list.appendChild(li);
+
+        input.value = "";
+    });
+</script>
+</body>
+</html>
